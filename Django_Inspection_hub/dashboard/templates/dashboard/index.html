@@ -1,0 +1,55 @@
+{% extends 'dashboard/main.html' %}
+
+{% block content %}
+
+
+
+<h1>Database Dashboard</h1>
+
+<br>
+
+<h3>Filter Dashboard</h3>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+            {{client_filter.form}}
+            {{structure_filter.form}}
+
+		  	</form>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="container-xxl">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">Client</th>
+          <th scope="col">Site</th>
+          <th scope="col">Asset Ref</th>
+          <th scope="col">Asset Name</th>
+          <th scope="col">Inspection Date</th>
+          <th scope="col">Number of Defects</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a, b, c, d, e, f in table_info %}
+            <tr>
+                <td><a href="{% url 'client_info' pk=a %}">{{a}}</a></td>
+                <td><a href="{% url 'site_info' pk=b %}">{{b}}</a></td>
+                <td>{{c}}</td>
+                <td>{{d}}</td>
+                <td>{{e}}</td>
+                <td>{{f}}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endblock %}

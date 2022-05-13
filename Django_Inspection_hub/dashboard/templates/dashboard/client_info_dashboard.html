@@ -1,0 +1,89 @@
+<br>
+
+<div class="row">
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">Client</h5>
+				<p class="card-text">If you wish to change the information shown, please press the edit button below to update.</p>
+				<a href="{% url 'update_client' client_name %}" class="btn btn-primary">Edit</a>
+			  </div>
+    		</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center  mb-3" id="client_1">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Client Info:</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h5 class="card-text">Name: {{client_name}}</h5>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center  mb-3" id="client_3">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Number of Sites</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h5 class="card-text"> Number of Sites: {{total_sites}}</h5>
+
+					<h5 class="card-text"> Number of Structures: {{total_structures}}</h5>
+
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  	</form>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="container-xxl">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">Site</th>
+          <th scope="col">Asset Ref</th>
+          <th scope="col">Asset Name</th>
+          <th scope="col">Last Inspection</th>
+		  <th scope="col">Number of Elements</th>
+          <th scope="col">Number of Defects</th>
+        </tr>
+      </thead>
+      <tbody>
+	  	{% for a, b, c, d, e, f in table_info %}
+            <tr>
+                <td>{{a}}</td>
+                <td>{{b}}</td>
+                <td>{{c}}</td>
+                <td>{{d}}</td>
+                <td>{{e}}</td>
+                <td>{{f}}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+

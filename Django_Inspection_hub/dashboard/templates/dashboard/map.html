@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a popup on hover</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map-container {
+        position: relative;
+      }
+#map { position: relative; top: 0; bottom: 0; height: 500px; width: 700px; }
+</style>
+</head>
+
+<body>
+
+<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+
+
+ <div id="map-container">
+       <div id='map'>
+       </div>
+</div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZXZhbmhpdGNoZW4xMjMiLCJhIjoiY2tsdG55cHhwMXljZTJwcW14NXRtdnlqbyJ9.crmopGBRIuybpke9VRYUfQ';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-4.523487, 53.943155],
+zoom: 4.3
+});
+
+
+map.on('load', function () {
+map.loadImage(
+'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+// Add an image to use as a custom marker
+function (error, image) {
+if (error) throw error;
+map.addImage('custom-marker', image);
+
+var data = JSON.parse("{{data|escapejs}}");
+
+map.addSource('places', data);
+
+// Add a layer showing the places.
+map.addLayer({
+'id': 'places',
+'type': 'symbol',
+'source': 'places',
+'layout': {
+'icon-image': 'custom-marker',
+'icon-allow-overlap': true
+}
+});
+}
+);
+
+// Create a popup, but don't add it to the map yet.
+var popup = new mapboxgl.Popup({
+closeButton: false,
+closeOnClick: false
+});
+
+map.on('mouseenter', 'places', function (e) {
+// Change the cursor style as a UI indicator.
+map.getCanvas().style.cursor = 'pointer';
+
+var coordinates = e.features[0].geometry.coordinates.slice();
+var description = e.features[0].properties.description;
+
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+
+// Populate the popup and set its coordinates
+// based on the feature found.
+popup.setLngLat(coordinates).setHTML(description).addTo(map);
+});
+
+map.on('mouseleave', 'places', function () {
+map.getCanvas().style.cursor = '';
+popup.remove();
+});
+});
+</script>
+
+</body>
+
+</html>

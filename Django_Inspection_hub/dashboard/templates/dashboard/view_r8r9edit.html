@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RHDHVInspections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+
+
+    </style>
+</head>
+{% include 'dashboard/navbar.html' %}
+<body>
+
+<br>
+<h3>View R8/R9 data before </h3>
+
+
+<div class = "row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <div class="form-group">
+               <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   <h5>Structure Information</h5>
+                    {{ structure_form }}
+                    {{elements.management_form}}
+                    {% for form in elements %}
+                        <br>
+                        <h5>Element {{forloop.counter}}</h5>
+                        {{ form }}
+                        {% for key, value in data.items %}
+                            {% if value.counter == forloop.parentloop.counter %}
+                               <br>
+                               <h5>Element {{forloop.parentloop.counter}} - Defect {{forloop.counter}}</h5>
+                                {% for key2, value2 in value.formset.items %}
+                                    {% if key2 != 'images' %}
+                                        {{value2}}
+                                    {% endif %}
+                                    {% if key2 == 'images' %}
+                                        <br>
+                                        {{ value2.management_form }}
+                                        {% for form2 in value2 %}
+                                            <h6>Defect {{forloop.parentloop.counter}} - Photo {{forloop.counter}}</h6>
+                                            {{form2}}
+                                            {% if form2.instance.file_name != '' %}
+                                                <img src="{{form2.instance.file_name.url}}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                   {% endfor %}
+
+                   <br>
+                   <h5>Upload previous report</h5>
+                    <p> Choose previous report so that the table at the end of the document can be populated</p>
+<!--                    {{ docxform }}-->
+                   <br>
+                   <br>
+                   <input type="submit" name="Save" value= "Save" class="btn btn-primary">
+                   <input type="submit" name="Save_and_Generate" value= "Save and Generate" class="btn btn-primary">
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

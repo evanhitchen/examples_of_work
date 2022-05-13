@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RHDHVInspections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+
+        body{background-color: #ccefff;
+        }
+
+        #total-clients{background-color:#51a0ff;
+        }
+
+        #total-sites{background-color:#51a0ff;
+        }
+
+        #total-structures{background-color:#51a0ff;
+        }
+
+        .container-xxl{background-color:#ffffff;
+        }
+
+    </style>
+</head>
+{% include 'dashboard/navbar.html' %}
+<body>
+    {% include 'dashboard/status_dashboard.html' %}
+    {% include 'dashboard/add_row_template.html' %}
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    <hr>
+    <h5>Our Footer</h5>
+
+
+</body>
+</html>

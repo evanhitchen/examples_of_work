@@ -1,0 +1,100 @@
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col">
+      <div class="row">
+        <div class="col">
+            <h4>Add Entries</h4>
+            <a class="btn btn-primary btn-lg" href="{% url 'create_client' %}" role="button">Add Client</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'create_site' %}" role="button">Add Site</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'create_structure' %}" role="button">Add Structure</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Add Element</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Add Defect</a>
+        </div>
+      </div>
+        <br>
+      <div class="row">
+        <div class="col">
+            <h4>Edit Existing Entries</h4>
+            <a class="btn btn-primary btn-lg" href="{% url 'select_client' %}" role="button">Edit Existing Client</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Site</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Structure</a>
+        </div>
+      </div>
+        <br>
+      <div class="row">
+        <div class="col">
+          <h4>Generate Report</h4>
+          <a class="btn btn-primary btn-lg" href="{% url 'select_r8r9' %}"  role="button">R8/R9</a>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Dover Report</a>
+        </div>
+      </div>
+        <br>
+      <div class="row">
+        <div class="col">
+          <h4>Upload to Database</h4>
+          <a class="btn btn-primary btn-lg" href="{% url 'uploadr8r9' %}" role="button">R8/R9</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'uploadexcel' %}" role="button">Excel</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h1>
+        {% include 'dashboard/map.html' %}
+      </h1>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!--<div class="add_row">-->
+<!--    <h4>Add Entries</h4>-->
+<!--    <a class="btn btn-primary btn-lg" href="{% url 'create_client' %}" role="button">Add Client</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="{% url 'create_site' %}" role="button">Add Site</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="{% url 'create_structure' %}" role="button">Add Structure</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Add Element</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Add Defect</a>-->
+<!--</div>-->
+
+<!--<br>-->
+
+<!--<div class="edit_row">-->
+<!--    <h4>Edit Existing Entries</h4>-->
+<!--    <a class="btn btn-primary btn-lg" href="{% url 'select_client' %}" role="button">Edit Existing Client</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Site</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Structure</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Element</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Edit Existing Defect</a>-->
+<!--</div>-->
+
+<!--<br>-->
+
+<!--<div class="row">-->
+<!--    <div class="col">-->
+<!--        <h4>Generate Report</h4>-->
+<!--        <a class="btn btn-primary btn-lg" href="{% url 'select_r8r9' %}"  role="button">R8/R9</a>-->
+<!--        <a class="btn btn-primary btn-lg" href="#" role="button">Dover Report</a>-->
+<!--    </div>-->
+<!--    <div class="col">-->
+<!--        <h4>Upload to Database</h4>-->
+<!--        <a class="btn btn-primary btn-lg" href="{% url 'uploadr8r9' %}" role="button">R8/R9</a>-->
+<!--        <a class="btn btn-primary btn-lg" href="#" role="button">Excel</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<br>
+
+<!--<div class="upload">-->
+<!--    <h4>Upload to Database</h4>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">R8/R9</a>-->
+<!--    <a class="btn btn-primary btn-lg" href="#" role="button">Excel</a>-->
+<!--</div>-->

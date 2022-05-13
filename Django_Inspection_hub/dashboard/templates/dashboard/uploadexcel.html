@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RHDHVInspections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+
+        body{background-color: #ccefff;
+        }
+
+        .container-xlg{background-color:#ffffff;
+        }
+
+        .container-xxl{background-color:#ffffff;
+        }
+
+    </style>
+</head>
+{% include 'dashboard/navbar.html' %}
+<body>
+
+    <br>
+    <h4> Choose Excel Document to be read and uploaded into the database </h4>
+    <div class = "row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <div class="form-group">
+                   <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form}}
+                       <br>
+                       <input type="submit" name="Submit" class="btn btn-primary">
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    <h5>Our Footer</h5>
+
+</body>
+</html>
